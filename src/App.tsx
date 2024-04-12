@@ -1,18 +1,40 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import './App.css';
 
+/**
+ * Interface for user credentials
+ * @interface
+ * @property {string} username - The username of the user
+ * @property {string} password - The password of the user
+ */
 interface Credentials {
   username: string;
   password: string;
 }
 
+/**
+ * Main App component
+ * @returns {JSX.Element} The rendered App component
+ */
 const App = () => {
+  /**
+   * State hook for user credentials
+   * @type {[Credentials, Function]} credentials - State variable and setter for user credentials
+   */
   const [credentials, setCredentials] = useState<Credentials>({ username: '', password: '' });
 
+  /**
+   * Handle change event for input fields
+   * @param {ChangeEvent<HTMLInputElement>} e - The change event
+   */
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
+  /**
+   * Handle form submission
+   * @param {FormEvent} e - The form event
+   */
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     console.log(credentials);
